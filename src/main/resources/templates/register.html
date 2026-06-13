@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Volunteer Registration</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: Arial, sans-serif; background: #f0f4ff; }
+
+        nav {
+            background-color: #1a73e8;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        nav h1 { color: white; font-size: 22px; }
+        nav a { color: white; text-decoration: none; margin-left: 20px; }
+
+        .container {
+            max-width: 500px;
+            margin: 50px auto;
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        h2 {
+            text-align: center;
+            color: #1a73e8;
+            margin-bottom: 25px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #333;
+        }
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 18px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            background: #1a73e8;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover { background: #0d47a1; }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <h1>🕊️ NayePankh Foundation</h1>
+        <a th:href="@{/}">Home</a>
+    </nav>
+
+    <div class="container">
+        <h2>Volunteer Registration</h2>
+        <form th:action="@{/register}" th:object="${volunteer}" method="post">
+
+            <label>Full Name</label>
+            <input type="text" th:field="*{name}" placeholder="Enter your name" required/>
+
+            <label>Email</label>
+            <input type="email" th:field="*{email}" placeholder="Enter your email" required/>
+
+            <label>Phone Number</label>
+            <input type="text" th:field="*{phone}" placeholder="Enter your phone" required/>
+
+            <label>Skills</label>
+            <input type="text" th:field="*{skills}" placeholder="e.g. Teaching, Coding, Design"/>
+
+            <label>Availability</label>
+            <select th:field="*{availability}">
+                <option value="Weekdays">Weekdays</option>
+                <option value="Weekends">Weekends</option>
+                <option value="Both">Both</option>
+            </select>
+
+            <button type="submit">Register as Volunteer</button>
+        </form>
+    </div>
+
+</body>
+</html>
